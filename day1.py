@@ -10,7 +10,21 @@ class Solution:
                 if(freqdict[max]<freqdict[nums[i]]):
                     max=nums[i]
         return max
-
+# second solution
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        max = nums[0]
+        count = 0
+        for i in range(0, len(nums)):
+            if(nums[i]==max):
+                count+=1
+            else:
+                count-=1
+                if(count == 0):
+                    max = nums[i]
+                    count = 1
+        return max
+            
   class Solution:
     def addBinary(self, a: str, b: str) -> str:
         if(len(a)<len(b)):
