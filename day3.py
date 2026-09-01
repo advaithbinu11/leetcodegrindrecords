@@ -41,3 +41,15 @@ class Solution:
             j-=1
         print(s)
         return int(s,2)
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        res = 0
+        j = 32
+        while(n>0):
+            bit = n & 1
+            res <<= 1
+            res |= bit
+            n >>= 1
+            j-=1
+        res <<= j
+        return res
