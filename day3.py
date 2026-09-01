@@ -27,4 +27,17 @@ class Solution:
                 if(j == len(s)):
                     return True
         return False
-        
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        s = ""
+        j =32
+        while(n>0):
+            bit = n % 2
+            s += str(bit)
+            n //= 2
+            j-=1
+        while(j>0):
+            s += "0"
+            j-=1
+        print(s)
+        return int(s,2)
