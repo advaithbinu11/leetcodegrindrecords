@@ -67,22 +67,22 @@ class Solution:
                 i-=1
         return sum
         # Failed 
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        i = 0
-        j = 1 
-        numDups = 0
-        while(j<len(nums)):
-            if(nums[i]==nums[j] and j-i == 2):
-                numDups += 1
-                for k in range(j, len(nums)-1):
-                    save = nums[k]
-                    nums[k] = nums[k+1]
-                    nums[k+1] = save
-                j-=1
-            if(nums[i]==nums[j]):
-                j+=1
-            else:
-                i = j
-                j = i +1
-        return len(nums) - numDups
+    class Solution:
+        def removeDuplicates(self, nums: List[int]) -> int:
+            i = 0
+            j = 1 
+            numDups = 0
+            while(j<len(nums)-numDups):
+                if(nums[i]==nums[j] and j-i == 2):
+                    numDups += 1
+                    for k in range(j, len(nums)-1):
+                        save = nums[k]
+                        nums[k] = nums[k+1]
+                        nums[k+1] = save
+                    j-=1
+                if(nums[i]==nums[j]):
+                    j+=1
+                else:
+                    i = i+1
+                    j = i +1
+            return len(nums) - numDups
