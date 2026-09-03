@@ -24,3 +24,21 @@ class Solution:
             x//=10
 
         return x == rev or rev//10 == x
+#Failed attempt
+class Solution:
+    def rotate(self, nums: list[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        k = k%len(nums)
+        if(k!=0):
+            j = len(nums)-k
+            i = 0
+            while(i<j):
+                save=nums[i]
+                nums[i] = nums[j]
+                nums[j] = save
+                i+=1
+                j+=1
+                if(j == len(nums)):
+                    j = len(nums)-k
