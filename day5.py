@@ -42,3 +42,24 @@ class Solution:
                 j+=1
                 if(j == len(nums)):
                     j = len(nums)-k
+#Failed attempt #2
+class Solution:
+    @staticmethod
+    def reverse(nums, i, j):
+        while i < j:
+            save = nums[i]
+            nums[i] = nums[j]
+            nums[j] = save
+            i += 1
+            j -= 1
+
+    def rotate(self, nums: list[int], k: int) -> None:
+        if len(nums) == 0:
+            return
+
+        k %= len(nums)
+
+        if k != 0:
+            self.reverse(nums, 0, len(nums) - 1)
+            self.reverse(nums, 0, k - 1)
+            self.reverse(nums, len(nums) - k, len(nums) - 1)
