@@ -18,3 +18,17 @@ class Solution:
             if dict[ransomNote[j]] == -1:
                 return False
         return True
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        dicts = {}
+        dictt = {}
+        for i in range(0 , len(s)):
+            if(dicts.get(s[i], None) == None and dictt.get(t[i], None) == None ):
+                dicts[s[i]] = t[i]
+                dictt[t[i]] = s[i]
+            elif((dicts.get(s[i], None) == None) != (dictt.get(t[i], None) == None) ):
+                return False
+            elif (dicts[s[i]]!=t[i] or dictt[t[i]]!=s[i]):
+                return False
+        return True
+        
