@@ -83,4 +83,29 @@ class Solution:
                     return False
         return True
 
-        
+    class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        numss = nums.copy()
+        numss.sort()
+        i = 0
+        j = len(nums)-1
+        res = []
+        while(i<j):
+            currSum = numss[i]+numss[j]
+            if(currSum < target):
+                i+=1
+            elif(currSum > target):
+                j-=1
+            else:
+                res = [i,j]
+                break
+        print(res)
+        rres = [-1,-1]
+        for j in range(0, len(nums)):
+            if(rres[0] == -1 and nums[j] == numss[res[0]]):
+                rres[0] = j
+            elif(nums[j] == numss[res[1]]):
+                rres[1] = j
+        return rres
+            
+    
