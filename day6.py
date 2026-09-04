@@ -38,5 +38,22 @@ class Solution:
             currS+=str(nums[len(nums)-1])
             res.append(currS)
         return res
+from collections import deque 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        list = deque()
+        map = {"{":"}", "[":"]", "(":")"}
+        fset = ("(", "[", "{")
+        for i in range(0,len(s)):
+            if(s[i] in fset):
+                list.append(s[i])
+            elif(len(list)==0):
+                return False
+            elif(map.get(list[-1])==s[i]):
+                list.pop()
+            else:
+                return False
+        return len(list)==0
+            
 
             
