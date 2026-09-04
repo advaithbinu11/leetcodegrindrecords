@@ -64,4 +64,23 @@ class Solution:
             elif(dictwtp[word] != pat or dictptw[pat] != word):
                 return False
         return True
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        dict = {}
+        if(len(s)!=len(t)):
+            return False
+        for i in range(0, len(s)):
+            if(dict.get(s[i], None) == None):
+                dict[s[i]] = 1
+            else:
+                dict[s[i]] += 1
+        for i in range(0, len(t)):
+            if(dict.get(t[i], None) == None):
+                return False
+            else:
+                dict[t[i]] -= 1
+                if(dict[t[i]]==-1):
+                    return False
+        return True
 
+        
