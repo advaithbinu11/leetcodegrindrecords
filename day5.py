@@ -45,3 +45,23 @@ class Solution:
             self.reverse(nums, 0, len(nums) - 1)
             self.reverse(nums, 0, k - 1)
             self.reverse(nums, k, len(nums) - 1)
+
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        arr = s.split(" ")
+        dictwtp = {}
+        dictptw = {}
+        if(len(pattern)!=len(arr)):
+            return False
+        for i in range(0, len(pattern)):
+            word = arr[i]
+            pat = pattern[i]
+            if(dictwtp.get(word, None) == None and dictptw.get(pat, None) == None):
+                dictwtp[word] = pat
+                dictptw[pat] = word
+            elif((dictwtp.get(word, None) == None) or (dictptw.get(pat, None) == None)):
+                return False
+            elif(dictwtp[word] != pat or dictptw[pat] != word):
+                return False
+        return True
+
