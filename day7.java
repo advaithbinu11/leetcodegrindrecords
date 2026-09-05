@@ -28,7 +28,7 @@ public class Solution {
 }
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, ArrayList<Integer>> map = new HashMap<String, ArrayList<Integer>>();
+        HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
         for(int pos = 0; pos<strs.length; pos++){
             String str = strs[pos];
             int[] alpha = new int[26];
@@ -36,21 +36,17 @@ class Solution {
                 alpha[(str.charAt(i)-'a')] += 1;
             }
         if(map.get(Arrays.toString(alpha)) == null){
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            indexes.add(pos);
+            ArrayList<String> indexes = new ArrayList<String>();
+            indexes.add(strs[pos]);
             map.put(Arrays.toString(alpha), indexes);
         }
         else{
-            map.get(Arrays.toString(alpha)).add(pos);
+            map.get(Arrays.toString(alpha)).add(strs[pos]);
         }
         }
         List<List<String>> res = new ArrayList<List<String>>();
         for(String key : map.keySet()){
-            ArrayList<String> arr = new ArrayList<String>();
-            for(int pos : map.get(key)){
-                arr.add(strs[pos]);
-            }
-            res.add(arr);
+            res.add(map.get(key));
         }
         return res;
     }
