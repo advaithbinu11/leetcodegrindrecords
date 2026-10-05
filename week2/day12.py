@@ -19,6 +19,17 @@ class Solution:
             res += distributions[j]
         res += distributions[len(ratings)-1]
         return res
-        
+class Solution:
+    def longestCommonPrefix(self, strs: list[str]) -> str:
+        maxLen = len(strs[0])
+        for curr in strs:
+            maxLen = min(len(curr), maxLen)
+            for i in range(0, maxLen):
+                if(curr[i] != strs[0][i]):
+                    maxLen = i
+                    break
+        return strs[0][0 : maxLen]
+
+
         
         
