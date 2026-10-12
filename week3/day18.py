@@ -30,5 +30,32 @@ class Solution:
                 primaryI.add(nums[i])
         return list
                     
+class Solution:
+    def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
+            left = 0
+            right = len(matrix) - 1
+            while (left<right):
+                mid = (left + right) // 2
+                if(matrix[mid][0] < target):
+                    left = mid + 1
+                elif(matrix[mid][0] > target):
+                    right = mid
+                else:
+                    return True
+            mid = (left + right) // 2
+            currRow = mid if matrix[mid][0] <= target else mid - 1
+            left = 0
+            right = len(matrix[currRow])
+            print(currRow)
+            while (left<right):
+                mid = (left + right) // 2
+                if(matrix[currRow][mid] < target):
+                    left = mid + 1
+                elif(matrix[currRow][mid] > target):
+                    right = mid
+                else:
+                    return True
+            return False
 
+        
         
