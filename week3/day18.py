@@ -56,6 +56,41 @@ class Solution:
                 else:
                     return True
             return False
-
-        
+class Solution:
+    def searchRange(self, nums: list[int], target: int) -> list[int]:
+        left = 1
+        right = len(nums) - 1
+        arr = [-1] * 2
+        if(len(nums) == 0):
+            return arr
+        mid = (left + right) // 2
+        while(left <= right):
+            if(nums[mid] == target and nums[mid-1] != target):
+                arr[0] = mid
+                break
+            elif(nums[mid] < target):
+                left = mid + 1
+            else:
+                right = mid - 1
+            mid = (left + right) // 2
+        if(nums[0] == target):
+            arr[0] = 0
+        left = 0
+        right = len(nums) - 2
+        mid = (left + right) // 2
+        while(left <= right):
+            if(nums[mid] < target):
+                left = mid + 1
+            elif(nums[mid] == target and nums[mid+1] == target):
+                left = mid + 1
+            else:
+                right = mid - 1
+            if(nums[mid] == target and nums[mid+1] != target):
+                arr[1] = mid
+                break
+            mid = (left + right) // 2
+        if(nums[len(nums) - 1] == target):
+            arr[1] = len(nums) - 1
+        return arr
+    
         
