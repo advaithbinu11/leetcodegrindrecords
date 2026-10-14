@@ -18,3 +18,16 @@ class MinStack:
     def getMin(self) -> int:
         return self.min_stack[len(self.min_stack)-1]
 
+class Solution:
+    def plusOne(self, digits: list[int]) -> list[int]:
+        i = -1
+        sum = 1 + digits[i]
+        while(sum > 9):
+            if(-1 * i == len(digits)):
+                digits = [0] + digits
+            digits[i] = sum % 10
+            sum //= 10
+            i-=1
+            sum += digits[i]
+        digits[i] = sum % 10
+        return digits
