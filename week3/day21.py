@@ -20,3 +20,22 @@ class Solution:
             currH-=1
             offSet+=1
         return result
+class Solution:
+    def rotate(self, matrix: list[list[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        list = []
+        offSet = 0
+        while(offSet<=len(matrix)/2):
+            for i in range(offSet, len(matrix) - offSet - 1):
+                list.append(matrix[offSet][i])
+                list.append(matrix[i][len(matrix[0])-1-offSet])
+                list.append(matrix[len(matrix)-1-offSet][len(matrix[0])-1-i])
+                list.append(matrix[len(matrix)-1-i][offSet])
+                matrix[offSet][i] = list[3]
+                matrix[i][len(matrix[0])-1-offSet] = list[0]
+                matrix[len(matrix)-1-offSet][len(matrix[0])-1-i] = list[1]
+                matrix[len(matrix)-1-i][offSet] = list[2]
+                list.clear()
+            offSet+=1
