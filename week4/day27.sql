@@ -13,3 +13,7 @@ FROM Employee as e1
 JOIN Employee as e2 ON e1.managerId = e2.id
 GROUP BY e1.managerId
 HAVING COUNT(*) >= 5
+SELECT *
+FROM Cinema
+WHERE id % 2 = 1 AND description != "boring"
+ORDER BY rating DESC
