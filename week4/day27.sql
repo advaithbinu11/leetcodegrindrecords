@@ -7,3 +7,9 @@ SELECT name
 FROM t1
 JOIN Employee as sec ON t1.managerId = sec.id 
 WHERE cnt >= 5
+#better version
+SELECT e2.name
+FROM Employee as e1
+JOIN Employee as e2 ON e1.managerId = e2.id
+GROUP BY e1.managerId
+HAVING COUNT(*) >= 5
