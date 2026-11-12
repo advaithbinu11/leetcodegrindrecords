@@ -17,3 +17,17 @@ SELECT *
 FROM Cinema
 WHERE id % 2 = 1 AND description != "boring"
 ORDER BY rating DESC
+# Write your MySQL query statement below
+with t1 AS (
+    SELECT product_id, SUM(units) as total
+    FROM UnitsSold as u
+    GROUP BY product_id
+), t2 AS (
+    SELECT p.product_id, price * units as rev
+    FROM Prices AS p
+    JOIN UnitsSold as u ON p.product_id = u.product_id AND u.purchase_date BETWEEN p.start_date AND end_date
+)
+SELECT t2.product_id, ROUND(SUM(rev) / total, 2) as average_price
+FROM t2
+JOIN t1 ON t1.product_id = t2.product_id
+GROUP BY t1.product_id
